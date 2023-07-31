@@ -1,0 +1,32 @@
+version: '3.8'
+name: weather-app
+services:
+  postgres:
+    image: postgres
+    container_name: postgres
+    restart: always
+    environment:
+      - POSTGRES_USER=root
+      - POSTGRES_PASSWORD=root
+      - POSTGRES_DB=weather-app
+    ports:
+      - '5432:5432'
+    volumes:
+      - db:/var/lib/postgresql/data
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: pgadmin
+    restart: always
+    environment: 
+      - PGADMIN_DEFAULT_EMAIL=admin@mail.com
+      - PGADMIN_DEFAULT_PASSWORD=root
+    ports:
+      - '5050:80'
+    volumes:
+      - pgadmin:/var/lib/pgadmin
+volumes:
+  db:
+    driver: local
+  pgadmin:
+    driver: local
+    
