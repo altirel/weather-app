@@ -12,18 +12,18 @@ import java.io.IOException;
 import java.net.URI;
 
 @Slf4j
-public class OpenWeatherLoggingInterceptor implements ClientHttpRequestInterceptor {
+public class OpenWeatherUriModifierInterceptor implements ClientHttpRequestInterceptor {
 
     private final static String APPID_PATH_VARIABLE = "appid";
 
     private final String appid;
 
-    private OpenWeatherLoggingInterceptor(String appid) {
+    private OpenWeatherUriModifierInterceptor(String appid) {
         this.appid = appid;
     }
 
-    public static OpenWeatherLoggingInterceptor create(String appId) {
-        return new OpenWeatherLoggingInterceptor(appId);
+    public static OpenWeatherUriModifierInterceptor create(String appId) {
+        return new OpenWeatherUriModifierInterceptor(appId);
     }
 
     @Nonnull

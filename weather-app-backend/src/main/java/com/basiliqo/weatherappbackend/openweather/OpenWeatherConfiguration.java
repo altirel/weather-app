@@ -23,7 +23,7 @@ public class OpenWeatherConfiguration {
     @Bean
     public RestTemplate restTemplate(RestTemplateBuilder restTemplateBuilder) {
         return restTemplateBuilder
-                .interceptors(OpenWeatherLoggingInterceptor.create(key))
+                .interceptors(OpenWeatherUriModifierInterceptor.create(key))
                 .rootUri(uri)
                 .build();
     }
